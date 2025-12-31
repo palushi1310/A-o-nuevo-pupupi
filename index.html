@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para vos ❤️</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .card {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #38bdf8;
+      color: #0f172a;
+    }
+    button:disabled {
+      background: #64748b;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>💌 Tengo algo para vos</h1>
+    <p id="mensaje">Este botón se habilita a las 00:00…</p>
+    <button id="boton" onclick="mostrarCarta()" disabled>
+      Abrir carta
+    </button>
+  </div>
+
+  <script>
+    const fechaObjetivo = new Date("2026-01-01T00:00:00");
+
+    const mensaje = document.getElementById("mensaje");
+    const boton = document.getElementById("boton");
+
+    function verificarHora() {
+      const ahora = new Date();
+      if (ahora >= fechaObjetivo) {
+        boton.disabled = false;
+        mensaje.innerText = "Ahora sí… 💙";
+      }
+    }
+
+    function mostrarCarta() {
+      mensaje.innerHTML = `
+        <p>
+          Amor,<br><br>
+          Esta es tu sorpresa.<br>
+          Gracias por ser vos, por tu paciencia, tu inteligencia
+          y por compartir la vida conmigo.<br><br>
+          Te amo más de lo que puedo poner en código.
+        </p>
+      `;
+      boton.style.display = "none";
+    }
+
+    setInterval(verificarHora, 1000);
+    verificarHora();
+  </script>
+
+</body>
+</html>
